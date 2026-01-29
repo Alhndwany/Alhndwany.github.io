@@ -1,0 +1,193 @@
+<!-- قسم آلية العمل -->
+<section id="workflow" class="py-20 bg-gradient-to-b from-black to-gray-900 relative">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center section-title">
+            آلية العمل التفاعلي
+        </h2>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-2">
+                <div class="tech-card p-6 rounded-2xl h-full">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-2xl font-bold text-red-400">محاكاة انتقال البيانات</h3>
+                        <div class="flex items-center space-x-2 space-x-reverse">
+                            <div class="w-3 h-3 rounded-full bg-green-500 animate-pulse"></div>
+                            <span class="text-sm text-gray-300" id="connection-status">جاهز للاتصال</span>
+                        </div>
+                    </div>
+                    
+                    <div class="relative bg-black border border-gray-800 rounded-lg overflow-hidden mb-6">
+                        <!-- Canvas لمحاكاة انتقال البيانات -->
+                        <canvas id="simulation-canvas" class="w-full h-96"></canvas>
+                        
+                        <!-- مؤشرات الحالة -->
+                        <div class="absolute top-4 left-4 bg-black bg-opacity-80 rounded-lg p-3 border border-red-600">
+                            <div class="text-sm font-bold text-red-400 mb-1">الحالة:</div>
+                            <div id="status-indicator" class="text-sm text-green-400">انتظار الإدخال</div>
+                        </div>
+                        
+                        <!-- مؤشرات البرجين -->
+                        <div id="tower1-indicator" class="absolute bottom-4 left-20 bg-black bg-opacity-80 rounded-lg p-2 border border-blue-600">
+                            <div class="text-xs text-blue-400">البرج المرسل</div>
+                        </div>
+                        
+                        <div id="tower2-indicator" class="absolute bottom-4 right-20 bg-black bg-opacity-80 rounded-lg p-2 border border-blue-600">
+                            <div class="text-xs text-blue-400">البرج المستقبل</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <!-- لوحة التحكم -->
+                        <div class="bg-gray-900 rounded-lg p-4 border border-gray-800">
+                            <h4 class="text-lg font-bold text-red-400 mb-4">لوحة التحكم</h4>
+                            
+                            <div class="mb-4">
+                                <label class="block text-sm text-gray-300 mb-2">أدخل الرسالة:</label>
+                                <div class="flex">
+                                    <input type="text" id="message-input" 
+                                           class="flex-grow bg-gray-800 border border-gray-700 rounded-r-lg p-3 text-white focus:outline-none focus:border-red-500"
+                                           placeholder="اكتب رسالتك هنا..." 
+                                           maxlength="50"
+                                           value="مرحباً بالاتصالات الضوئية">
+                                    <button id="send-btn" class="bg-gradient-to-r from-red-600 to-blue-600 text-white font-bold px-4 rounded-l-lg hover:opacity-90 transition-opacity">
+                                        إرسال
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label class="block text-sm text-gray-300 mb-2">سرعة المحاكاة:</label>
+                                <div class="flex items-center space-x-3 space-x-reverse">
+                                    <span class="text-xs text-gray-400">بطيئة</span>
+                                    <input type="range" id="speed-slider" min="1" max="10" value="5" class="flex-grow accent-red-600">
+                                    <span class="text-xs text-gray-400">سريعة</span>
+                                </div>
+                            </div>
+                            
+                            <div class="flex space-x-2 space-x-reverse">
+                                <button id="reset-btn" class="flex-grow bg-gray-800 text-gray-300 font-bold py-2 rounded-lg hover:bg-gray-700 transition-colors">
+                                    إعادة تعيين
+                                </button>
+                                <button id="demo-btn" class="flex-grow bg-gradient-to-r from-blue-600 to-red-600 text-white font-bold py-2 rounded-lg hover:opacity-90 transition-opacity">
+                                    تشغيل تجريبي
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- معلومات العملية -->
+                        <div class="bg-gray-900 rounded-lg p-4 border border-gray-800">
+                            <h4 class="text-lg font-bold text-blue-400 mb-4">معلومات العملية</h4>
+                            
+                            <div class="space-y-4">
+                                <div>
+                                    <div class="text-sm text-gray-400 mb-1">الرسالة الأصلية:</div>
+                                    <div id="original-message" class="text-sm bg-gray-800 p-2 rounded border border-gray-700 min-h-10">-</div>
+                                </div>
+                                
+                                <div>
+                                    <div class="text-sm text-gray-400 mb-1">البيانات الثنائية:</div>
+                                    <div id="binary-data" class="text-xs font-mono bg-gray-800 p-2 rounded border border-gray-700 min-h-10 overflow-x-auto">-</div>
+                                </div>
+                                
+                                <div>
+                                    <div class="text-sm text-gray-400 mb-1">الرسالة المستقبَلة:</div>
+                                    <div id="received-message" class="text-sm bg-gray-800 p-2 rounded border border-gray-700 min-h-10">-</div>
+                                </div>
+                                
+                                <div class="pt-2 border-t border-gray-800">
+                                    <div class="flex justify-between text-sm">
+                                        <span class="text-gray-400">عدد البتات:</span>
+                                        <span id="bits-count" class="text-blue-400">0</span>
+                                    </div>
+                                    <div class="flex justify-between text-sm">
+                                        <span class="text-gray-400">زمن الإرسال:</span>
+                                        <span id="transmission-time" class="text-red-400">0ms</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center text-sm text-gray-500">
+                        <p>انقر على "إرسال" لمشاهدة عملية نقل البيانات عبر شعاع الليزر في الوقت الفعلي</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div>
+                <div class="tech-card p-6 rounded-2xl h-full">
+                    <h3 class="text-2xl font-bold mb-6 text-blue-400">مراحل انتقال البيانات</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 bg-red-900 rounded-full flex items-center justify-center ml-4 flex-shrink-0">
+                                <i class="fas fa-keyboard text-red-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg text-red-300 mb-1">المرحلة 1: إدخال البيانات</h4>
+                                <p class="text-gray-300 text-sm">إدخال الرسالة النصية في الطرف المرسل</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 bg-blue-900 rounded-full flex items-center justify-center ml-4 flex-shrink-0">
+                                <i class="fas fa-code text-blue-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg text-blue-300 mb-1">المرحلة 2: الترميز</h4>
+                                <p class="text-gray-300 text-sm">تحويل النص إلى بيانات ثنائية (0 و 1)</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 bg-purple-900 rounded-full flex items-center justify-center ml-4 flex-shrink-0">
+                                <i class="fas fa-arrow-up text-purple-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg text-purple-300 mb-1">المرحلة 3: الصعود</h4>
+                                <p class="text-gray-300 text-sm">ارسال البيانات الثنائية لأعلى البرج المرسل</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 bg-gradient-to-r from-red-800 to-blue-800 rounded-full flex items-center justify-center ml-4 flex-shrink-0">
+                                <i class="fas fa-bolt text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-blue-400 mb-1">المرحلة 4: الإرسال اللاسلكي</h4>
+                                <p class="text-gray-300 text-sm">نقل البيانات عبر شعاع ليزر بين البرجين</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 bg-blue-900 rounded-full flex items-center justify-center ml-4 flex-shrink-0">
+                                <i class="fas fa-arrow-down text-blue-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg text-blue-300 mb-1">المرحلة 5: النزول</h4>
+                                <p class="text-gray-300 text-sm">استقبال البيانات ونزولها في البرج المستقبل</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 bg-green-900 rounded-full flex items-center justify-center ml-4 flex-shrink-0">
+                                <i class="fas fa-laptop text-green-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg text-green-300 mb-1">المرحلة 6: فك الترميز</h4>
+                                <p class="text-gray-300 text-sm">تحويل البيانات الثنائية إلى نص وعرضها</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 p-4 bg-gray-900 rounded-lg border-r-4 border-red-600">
+                        <p class="text-sm">
+                            <span class="font-bold text-red-400">معلومة:</span> 
+                            السرعة النظرية لنقل البيانات بالليزر تصل إلى 100 جيجابت/ثانية، مما يسمح بنقل هذا المحتوى في أقل من جزء من المليون من الثانية.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

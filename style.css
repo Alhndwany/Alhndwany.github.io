@@ -1,0 +1,109 @@
+/* إضافة أنماط للمحاكاة التفاعلية */
+#simulation-canvas {
+    display: block;
+    background: #000000;
+}
+
+/* تخصيص عنصر range */
+input[type="range"] {
+    -webkit-appearance: none;
+    height: 8px;
+    border-radius: 4px;
+    background: linear-gradient(to right, #1f2937, #374151);
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ef4444, #3b82f6);
+    cursor: pointer;
+    border: 2px solid #111827;
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ef4444, #3b82f6);
+    cursor: pointer;
+    border: 2px solid #111827;
+}
+
+/* تحسين مظهر مربعات النص */
+#message-input {
+    transition: border-color 0.3s ease;
+}
+
+#message-input:focus {
+    box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2);
+}
+
+/* تحسين مظهر الأزرار */
+#send-btn, #demo-btn, #reset-btn {
+    transition: all 0.3s ease;
+}
+
+#send-btn:hover, #demo-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+#reset-btn:hover {
+    background-color: #374151;
+}
+
+/* تحسين مظهر مؤشرات الحالة */
+#tower1-indicator, #tower2-indicator {
+    transition: all 0.3s ease;
+}
+
+/* تأثيرات النص المتلألئ للبتات */
+@keyframes bitGlow {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+.bit-glow {
+    animation: bitGlow 1s infinite;
+}
+
+/* تأثير النبض لمؤشر الحالة */
+@keyframes statusPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.status-pulse {
+    animation: statusPulse 2s infinite;
+}
+
+/* تحسين عرض البيانات الثنائية */
+#binary-data {
+    font-family: 'Courier New', monospace;
+    letter-spacing: 1px;
+}
+
+/* تأثير التحميل */
+@keyframes loadingDots {
+    0%, 20% { content: '.'; }
+    40% { content: '..'; }
+    60%, 100% { content: '...'; }
+}
+
+.loading::after {
+    content: '';
+    animation: loadingDots 1.5s infinite;
+}
+
+/* تحسين الاستجابة للجوال */
+@media (max-width: 768px) {
+    #simulation-canvas {
+        height: 300px !important;
+    }
+    
+    .grid-cols-1.md\\:grid-cols-2 {
+        grid-template-columns: 1fr;
+    }
+}
