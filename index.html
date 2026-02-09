@@ -3,2171 +3,793 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lazer Link - ثورة الاتصالات الضوئية اللاسلكية</title>
+    <title>Laser Link: ثورة الاتصالات البصرية في الفضاء الحر</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" type="image/x-icon" href="https://img.icons8.com/color/96/000000/satellite-communication.png">
+    <style>
+        :root {
+            --primary-dark: #8B0000;
+            --primary-red: #B22222;
+            --secondary-dark: #1a1a1a;
+            --light-bg: #f5f5f5;
+            --text-light: #ffffff;
+            --text-dark: #333333;
+            --accent-gold: #D4AF37;
+            --accent-blue: #0d47a1;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--secondary-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: rgba(0, 0, 0, 0.9);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .college-logo {
+            width: 80px;
+            height: auto;
+            margin-left: 15px;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-text h1 {
+            font-size: 1.8rem;
+            color: var(--primary-red);
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+        
+        .logo-text h2 {
+            font-size: 1rem;
+            color: var(--accent-gold);
+            font-weight: 500;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-right: 25px;
+        }
+        
+        nav ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-red);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-red);
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(139, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            padding-top: 80px;
+        }
+        
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--text-light);
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+        }
+        
+        .hero .tagline {
+            font-size: 1.8rem;
+            color: var(--accent-gold);
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-red);
+            color: var(--text-light);
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            border: 2px solid var(--primary-red);
+        }
+        
+        .cta-button:hover {
+            background-color: transparent;
+            color: var(--primary-red);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Content Sections */
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-red);
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 3px;
+            background-color: var(--accent-gold);
+        }
+        
+        .section-content {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            border-left: 5px solid var(--primary-red);
+        }
+        
+        .section-content h3 {
+            color: var(--accent-gold);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .section-content p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .section-content ul {
+            margin-right: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .section-content ul li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-right: 25px;
+        }
+        
+        .section-content ul li::before {
+            content: '►';
+            color: var(--primary-red);
+            position: absolute;
+            right: 0;
+        }
+        
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+        
+        .comparison-table th {
+            background-color: var(--primary-dark);
+            color: var(--text-light);
+            padding: 20px;
+            text-align: center;
+            font-size: 1.3rem;
+        }
+        
+        .comparison-table td {
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        
+        .microwave {
+            color: #ff6b6b;
+        }
+        
+        .laser {
+            color: #4ecdc4;
+        }
+        
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .team-member {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s;
+            border-top: 4px solid var(--primary-red);
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .member-icon {
+            font-size: 3rem;
+            color: var(--primary-red);
+            margin-bottom: 15px;
+        }
+        
+        .team-member h4 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--accent-gold);
+        }
+        
+        .team-member p {
+            color: #aaa;
+        }
+        
+        .supervisor {
+            border-top: 4px solid var(--accent-gold);
+        }
+        
+        /* Quote Section */
+        .quote-section {
+            background: linear-gradient(rgba(139, 0, 0, 0.8), rgba(26, 26, 26, 0.9));
+            padding: 60px 0;
+            text-align: center;
+            margin: 60px 0;
+        }
+        
+        .quote {
+            font-size: 2rem;
+            font-style: italic;
+            color: var(--text-light);
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.5;
+            position: relative;
+        }
+        
+        .quote::before, .quote::after {
+            content: '"';
+            font-size: 4rem;
+            color: var(--accent-gold);
+            position: absolute;
+            opacity: 0.5;
+        }
+        
+        .quote::before {
+            top: -20px;
+            right: -40px;
+        }
+        
+        .quote::after {
+            bottom: -40px;
+            left: -40px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: rgba(0, 0, 0, 0.95);
+            padding: 60px 0 30px;
+            border-top: 5px solid var(--primary-dark);
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            flex: 1;
+            min-width: 300px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-info {
+            flex: 1;
+            min-width: 300px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-info h3 {
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .footer-info ul {
+            list-style: none;
+        }
+        
+        .footer-info ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-info ul li i {
+            color: var(--primary-red);
+            margin-left: 10px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero .tagline {
+                font-size: 1.5rem;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                background: none;
+                border: none;
+                color: var(--text-light);
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .comparison-table {
+                display: block;
+                overflow-x: auto;
+            }
+            
+            .quote {
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo-container {
+                margin-bottom: 15px;
+            }
+            
+            .hero {
+                height: auto;
+                padding: 120px 0 80px;
+            }
+            
+            .section {
+                padding: 50px 0;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- شريط التنقل -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#" class="logo">
-                <i class="fas fa-satellite-dish"></i>
-                <span>Lazer<span class="logo-highlight">Link</span></span>
-            </a>
-            
-            <button class="menu-toggle" id="menuToggle">
-                <i class="fas fa-bars"></i>
-            </button>
-            
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#home" class="nav-link active">الرئيسية</a></li>
-                <li><a href="#about" class="nav-link">ما هي FSO؟</a></li>
-                <li><a href="#components" class="nav-link">المكونات</a></li>
-                <li><a href="#physics" class="nav-link">الفيزياء</a></li>
-                <li><a href="#solutions" class="nav-link">الحلول</a></li>
-                <li><a href="#comparison" class="nav-link">المقارنات</a></li>
-                <li><a href="#team" class="nav-link">فرق العمل</a></li>
-                <li><a href="#future" class="nav-link">المستقبل</a></li>
-            </ul>
-            
-            <div class="theme-toggle">
-                <button id="themeToggle">
-                    <i class="fas fa-moon"></i>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <!-- شعار الكلية - سيتم استبداله بالشعار الفعلي -->
+                    <div class="logo-placeholder college-logo" style="background-color: var(--primary-red); color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; border-radius: 5px;">
+                        GCHS
+                    </div>
+                    <div class="logo-text">
+                        <h1>Laser Link</h1>
+                        <h2>كلية الغد الدولية للعلوم الصحية والتقنية</h2>
+                    </div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">الرئيسية</a></li>
+                        <li><a href="#about">عن التقنية</a></li>
+                        <li><a href="#comparison">مقارنة الأداء</a></li>
+                        <li><a href="#team">فريق العمل</a></li>
+                    </ul>
+                </nav>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
                 </button>
             </div>
         </div>
-    </nav>
+    </header>
 
-    <!-- القسم الرئيسي -->
-    <section id="home" class="hero">
-        <div class="hero-background">
-            <div class="laser-beam"></div>
-        </div>
-        <div class="hero-content">
-            <h1 class="hero-title">
-                <span class="title-line">ثورة الاتصالات الضوئية</span>
-                <span class="title-line highlight">اللاسلكية FSO</span>
-            </h1>
-            <p class="hero-subtitle">
-                أسرع من الألياف، أكثر أماناً من الراديو، مستقبل الإنترنت فائق السرعة
-            </p>
-            <div class="hero-buttons">
-                <a href="#about" class="btn btn-primary">
-                    <i class="fas fa-rocket"></i>
-                    استكشف التقنية
-                </a>
-                <a href="#comparison" class="btn btn-secondary">
-                    <i class="fas fa-balance-scale"></i>
-                    مقارنة تقنية
-                </a>
-            </div>
-        </div>
-        
-        <div class="scroll-indicator">
-            <i class="fas fa-chevron-down"></i>
-        </div>
-    </section>
-
-    <!-- قسم ما هي تقنية FSO -->
-    <section id="about" class="section">
+    <!-- Hero Section -->
+    <section class="hero" id="home">
         <div class="container">
-            <h2 class="section-title">
-                <span class="title-text">ما هي تقنية</span>
-                <span class="title-highlight">Free Space Optics (FSO)؟</span>
-            </h2>
-            
-            <div class="about-content">
-                <div class="about-text">
-                    <p class="lead">
-                        تقنية FSO هي نظام اتصالات بصري لاسلكي يستخدم نبضات من الضوء غير المرئي (غالباً الليزر) 
-                        لنقل البيانات بسرعات هائلة عبر الهواء أو الفراغ.
-                    </p>
-                    
-                    <div class="info-grid">
-                        <div class="info-card">
-                            <div class="info-icon">
-                                <i class="fas fa-bolt"></i>
-                            </div>
-                            <h3>سرعة فائقة</h3>
-                            <p>سرعات تصل إلى 100Gbps وما فوق</p>
-                        </div>
-                        
-                        <div class="info-card">
-                            <div class="info-icon">
-                                <i class="fas fa-shield-alt"></i>
-                            </div>
-                            <h3>أمان مطلق</h3>
-                            <p>شعاع ضيق مستحيل اعتراضه</p>
-                        </div>
-                        
-                        <div class="info-card">
-                            <div class="info-icon">
-                                <i class="fas fa-money-bill-wave"></i>
-                            </div>
-                            <h3>توفير في التكلفة</h3>
-                            <p>بدون تراخيص أو حفر للشوارع</p>
-                        </div>
-                        
-                        <div class="info-card">
-                            <div class="info-icon">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                            <h3>تركيب سريع</h3>
-                            <p>تشغيل خلال ساعات بدلاً من شهور</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="about-visual">
-                    <div class="system-diagram">
-                        <div class="diagram-node sender">
-                            <i class="fas fa-broadcast-tower"></i>
-                            <span>جهاز الإرسال</span>
-                        </div>
-                        
-                        <div class="diagram-link">
-                            <div class="laser-line"></div>
-                            <div class="data-packet">
-                                <i class="fas fa-binary"></i>
-                            </div>
-                        </div>
-                        
-                        <div class="diagram-node atmosphere">
-                            <i class="fas fa-cloud"></i>
-                            <span>الغلاف الجوي</span>
-                        </div>
-                        
-                        <div class="diagram-link">
-                            <div class="laser-line"></div>
-                        </div>
-                        
-                        <div class="diagram-node receiver">
-                            <i class="fas fa-satellite"></i>
-                            <span>جهاز الاستقبال</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="hero-content">
+                <h1>Laser Link: ثورة الاتصالات البصرية في الفضاء الحر</h1>
+                <div class="tagline">نحن لا ننقل البيانات فحسب.. نحن نحررها في الفضاء</div>
+                <p>تقنية FSO أو (Free Space Optics) هي نظام اتصالات بصري لاسلكي متطور، يعتمد على نقل البيانات عبر الهواء أو الفراغ باستخدام حزم ضوئية دقيقة (ليزر). تمثل هذه التقنية الجسر المثالي الذي يجمع بين سرعات الألياف الضوئية الهائلة ومرونة الأنظمة اللاسلكية.</p>
+                <a href="#about" class="cta-button">اكتشف الثورة</a>
             </div>
         </div>
     </section>
 
-    <!-- قسم المكونات الدقيقة -->
-    <section id="components" class="section dark-section">
+    <!-- About Section -->
+    <section class="section" id="about">
         <div class="container">
-            <h2 class="section-title">
-                <span class="title-text">البنية التحتية و</span>
-                <span class="title-highlight">المكونات الدقيقة</span>
-            </h2>
-            
-            <div class="components-grid">
-                <div class="component-card">
-                    <div class="component-header">
-                        <div class="component-icon">
-                            <i class="fas fa-microscope"></i>
-                        </div>
-                        <h3>ليزر أشباه الموصلات</h3>
-                        <span class="component-tag">Laser Diodes</span>
-                    </div>
-                    
-                    <div class="component-body">
-                        <ul class="component-list">
-                            <li>
-                                <i class="fas fa-wavelength"></i>
-                                <span>الأطوال الموجية: 850-1550 نانومتر</span>
-                            </li>
-                            <li>
-                                <i class="fas fa-eye"></i>
-                                <span>المفضل: 1550nm (آمن للعين - Eye Safe)</span>
-                            </li>
-                            <li>
-                                <i class="fas fa-network-wired"></i>
-                                <span>متوافق مع معدات الألياف البصرية</span>
-                            </li>
-                            <li>
-                                <i class="fas fa-bolt"></i>
-                                <span>كفاءة طاقة عالية تصل إلى 70%</span>
-                            </li>
-                        </ul>
-                        
-                        <div class="wavelength-spectrum">
-                            <div class="spectrum-bar" style="width: 30%; background: #ff4444;">
-                                <span>850nm</span>
-                            </div>
-                            <div class="spectrum-bar" style="width: 40%; background: #ff8800;">
-                                <span>1310nm</span>
-                            </div>
-                            <div class="spectrum-bar active" style="width: 30%; background: #00aa00;">
-                                <span>1550nm</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="section-title">
+                <h2>ما هي تقنية FSO؟</h2>
+            </div>
+            <div class="section-content">
+                <p>تقنية FSO أو (Free Space Optics) هي نظام اتصالات بصري لاسلكي متطور، يعتمد على نقل البيانات عبر الهواء أو الفراغ باستخدام حزم ضوئية دقيقة (ليزر). تمثل هذه التقنية الجسر المثالي الذي يجمع بين سرعات الألياف الضوئية الهائلة ومرونة الأنظمة اللاسلكية، دون الحاجة إلى بنية تحتية مادية مكلفة.</p>
                 
-                <div class="component-card">
-                    <div class="component-header">
-                        <div class="component-icon">
-                            <i class="fas fa-crosshairs"></i>
-                        </div>
-                        <h3>نظام التتبع والضبط</h3>
-                        <span class="component-tag">PAT System</span>
-                    </div>
-                    
-                    <div class="component-body">
-                        <ul class="component-list">
-                            <li>
-                                <i class="fas fa-compact-disc"></i>
-                                <span>مرايا متحركة إلكترونياً (FSM)</span>
-                            </li>
-                            <li>
-                                <i class="fas fa-tachometer-alt"></i>
-                                <span>ضبط في أجزاء من الثانية</span>
-                            </li>
-                            <li>
-                                <i class="fas fa-wind"></i>
-                                <span>مقاومة تمايل المباني بفعل الرياح</span>
-                            </li>
-                            <li>
-                                <i class="fas fa-robot"></i>
-                                <span>تحكم آلي بالكامل</span>
-                            </li>
-                        </ul>
-                        
-                        <div class="tracking-demo">
-                            <div class="target-area">
-                                <div class="beam-source"></div>
-                                <div class="beam-path"></div>
-                                <div class="target" id="movingTarget"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="component-card">
-                    <div class="component-header">
-                        <div class="component-icon">
-                            <i class="fas fa-filter"></i>
-                        </div>
-                        <h3>أنظمة التصفية والحماية</h3>
-                        <span class="component-tag">Optical Filters</span>
-                    </div>
-                    
-                    <div class="component-body">
-                        <ul class="component-list">
-                            <li>
-                                <i class="fas fa-sun"></i>
-                                <span>مرشحات ضيقة النطاق لرفض ضوء الشمس</span>
-                            </li>
-                            <li>
-                                <i class="fas fa-temperature-high"></i>
-                                <span>أنظمة تسخين لمنع التكثف والجليد</span>
-                            </li>
-                            <li>
-                                <i class="fas fa-compress-arrows-alt"></i>
-                                <span>عدسات تلسكوبية عالية الدقة</span>
-                            </li>
-                            <li>
-                                <i class="fas fa-layer-group"></i>
-                                <span>طبقات مضادة للانعكاس</span>
-                            </li>
-                        </ul>
-                        
-                        <div class="filter-spectrum">
-                            <div class="light-source sun">
-                                <i class="fas fa-sun"></i>
-                            </div>
-                            <div class="filter-element">
-                                <i class="fas fa-filter"></i>
-                            </div>
-                            <div class="light-output laser">
-                                <i class="fas fa-broadcast-tower"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <h3>مبدأ العمل: كيف يعمل Laser Link؟</h3>
+                <p>تعتمد التقنية على تحويل البيانات الرقمية (0 و 1) إلى نبضات ضوئية سريعة جداً.</p>
+                <ul>
+                    <li><strong>المرسل (Transmitter):</strong> يقوم بمعالجة البيانات وإرسالها عبر عدسات ليزرية مركزة.</li>
+                    <li><strong>المستقبل (Receiver):</strong> يحتوي على حساس ضوئي (Photodetector) عالي الحساسية يلتقط النبضات ويعيد تحويلها إلى بيانات رقمية فوراً.</li>
+                </ul>
             </div>
             
-            <div class="tech-specs">
-                <h3 class="specs-title">المواصفات الفنية التفصيلية</h3>
-                <div class="specs-grid">
-                    <div class="spec-item">
-                        <div class="spec-label">نطاق العمل</div>
-                        <div class="spec-value">300 GHz - 1 PHz</div>
-                    </div>
-                    <div class="spec-item">
-                        <div class="spec-label">زاوية الانتشار</div>
-                        <div class="spec-value">0.5 - 5 mrad</div>
-                    </div>
-                    <div class="spec-item">
-                        <div class="spec-label">معدل الخطأ (BER)</div>
-                        <div class="spec-value">&lt; 10⁻¹²</div>
-                    </div>
-                    <div class="spec-item">
-                        <div class="spec-label">معايير السلامة</div>
-                        <div class="spec-value">IEC 60825-1 Class 1M</div>
-                    </div>
-                    <div class="spec-item">
-                        <div class="spec-label">درجة الحرارة</div>
-                        <div class="spec-value">-40°C إلى +70°C</div>
-                    </div>
-                    <div class="spec-item">
-                        <div class="spec-label">التوافقية</div>
-                        <div class="spec-value">IEEE 802.3 Ethernet</div>
-                    </div>
-                </div>
+            <div class="section-title">
+                <h2>لماذا Laser Link؟ (تحديات وحلول)</h2>
+            </div>
+            <div class="section-content">
+                <p>في ظل الانفجار المعلوماتي الحالي، أصبحت الحلول التقليدية تعاني من "عنق زجاجة" حقيقي:</p>
+                
+                <h3>1. وداعاً لمشاكل الراديو (RF)</h3>
+                <ul>
+                    <li><strong>التحرر من الازدحام:</strong> بينما تعاني ترددات WiFi والموبايل من محدودية الطيف، توفر تقنية FSO مساحة ترددية غير محدودة.</li>
+                    <li><strong>أمن فيزيائي (Physical Layer Security):</strong> حزمة الليزر ضيقة جداً، مما يجعل التنصت مستحيلاً تقريباً؛ فبمجرد محاولة اعتراض الشعاع، ينقطع الاتصال فوراً ويتم اكتشاف التسلل.</li>
+                    <li><strong>صفر تداخل:</strong> لا تتأثر إشاراتنا بالمحركات الكهربائية أو أبراج البث الأخرى.</li>
+                </ul>
+                
+                <h3>2. بديل الألياف الضوئية (Fiber) دون حفر</h3>
+                <ul>
+                    <li><strong>سرعة النشر:</strong> لا داعي لانتظار شهور لحفر الشوارع أو مد كابلات تحت البحر؛ نظامنا يُركب على الأسطح ويُفعل في ساعات.</li>
+                    <li><strong>التكلفة:</strong> توفير ضخم في تكاليف التأسيس والتراخيص القانونية، فالطيف الضوئي مجاني ومتاح للجميع.</li>
+                </ul>
             </div>
         </div>
     </section>
 
-    <!-- قسم الفيزياء والتحديات -->
-    <section id="physics" class="section">
+    <!-- Comparison Section -->
+    <section class="section" id="comparison" style="background-color: rgba(0, 0, 0, 0.7);">
         <div class="container">
-            <h2 class="section-title">
-                <span class="title-text">الفيزياء وراء</span>
-                <span class="title-highlight">تشتت الإشارة</span>
-            </h2>
-            
-            <div class="physics-content">
-                <div class="physics-explanation">
-                    <div class="phenomenon-card">
-                        <div class="phenomenon-header">
-                            <h3>
-                                <i class="fas fa-wind"></i>
-                                تشتت رايلي
-                                <span class="phenomenon-tag">Rayleigh Scattering</span>
-                            </h3>
-                        </div>
-                        <div class="phenomenon-body">
-                            <p>
-                                يحدث عندما يصطدم الضوء بجزيئات أصغر من طوله الموجي (مثل الغازات)
-                            </p>
-                            <div class="particle-demo small-particles">
-                                <div class="light-wave"></div>
-                                <div class="particle"></div>
-                                <div class="particle"></div>
-                                <div class="particle"></div>
-                            </div>
-                            <div class="effect-level">
-                                <span>تأثير متوسط</span>
-                                <div class="level-bar">
-                                    <div class="level-fill" style="width: 40%"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="phenomenon-card main-issue">
-                        <div class="phenomenon-header">
-                            <h3>
-                                <i class="fas fa-cloud"></i>
-                                تشتت مِي
-                                <span class="phenomenon-tag">Mie Scattering</span>
-                            </h3>
-                        </div>
-                        <div class="phenomenon-body">
-                            <p>
-                                يحدث عند اصطدام الضوء بجزيئات تقارب طوله الموجي (مثل قطرات الضباب)
-                            </p>
-                            <div class="particle-demo fog-particles">
-                                <div class="light-wave"></div>
-                                <div class="particle fog"></div>
-                                <div class="particle fog"></div>
-                                <div class="particle fog"></div>
-                            </div>
-                            <div class="effect-level">
-                                <span>تأثير عالي</span>
-                                <div class="level-bar">
-                                    <div class="level-fill" style="width: 90%"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="phenomenon-card">
-                        <div class="phenomenon-header">
-                            <h3>
-                                <i class="fas fa-tint"></i>
-                                تأثير المطر
-                                <span class="phenomenon-tag">Rain Attenuation</span>
-                            </h3>
-                        </div>
-                        <div class="phenomenon-body">
-                            <p>
-                                قطرات المطر أكبر بكثير من طول موجة الليزر، لذا تأثيرها أقل من الضباب
-                            </p>
-                            <div class="particle-demo rain-particles">
-                                <div class="light-wave"></div>
-                                <div class="particle rain"></div>
-                                <div class="particle rain"></div>
-                            </div>
-                            <div class="effect-level">
-                                <span>تأثير منخفض</span>
-                                <div class="level-bar">
-                                    <div class="level-fill" style="width: 25%"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="section-title">
+                <h2>الأداء الفني: الليزر مقابل الميكروويف</h2>
+            </div>
+            <div class="section-content">
+                <p>القاعدة الذهبية في عالمنا هي: "كلما زاد التردد، زادت كمية البيانات".</p>
                 
-                <div class="weather-impact">
-                    <h3>تأثير الظروف الجوية على مدى الرابط</h3>
-                    <div class="weather-chart">
-                        <div class="chart-y-axis">
-                            <span>مسافة (كم)</span>
-                            <div class="axis-values">
-                                <span>10</span>
-                                <span>8</span>
-                                <span>6</span>
-                                <span>4</span>
-                                <span>2</span>
-                                <span>0</span>
-                            </div>
-                        </div>
-                        
-                        <div class="chart-bars">
-                            <div class="weather-condition">
-                                <span>جو صاف</span>
-                                <div class="chart-bar" style="height: 100%; background: #00aa00;">
-                                    <span>10 كم</span>
-                                </div>
-                            </div>
-                            <div class="weather-condition">
-                                <span>مطر خفيف</span>
-                                <div class="chart-bar" style="height: 80%; background: #0088cc;">
-                                    <span>8 كم</span>
-                                </div>
-                            </div>
-                            <div class="weather-condition">
-                                <span>مطر غزير</span>
-                                <div class="chart-bar" style="height: 60%; background: #0066cc;">
-                                    <span>6 كم</span>
-                                </div>
-                            </div>
-                            <div class="weather-condition">
-                                <span>ضباب خفيف</span>
-                                <div class="chart-bar" style="height: 40%; background: #ff8800;">
-                                    <span>4 كم</span>
-                                </div>
-                            </div>
-                            <div class="weather-condition">
-                                <span>ضباب كثيف</span>
-                                <div class="chart-bar" style="height: 10%; background: #ff4444;">
-                                    <span>1 كم</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>وجه المقارنة</th>
+                            <th>الميكروويف (Microwave)</th>
+                            <th>الليزر (Laser Link - FSO)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>التردد</strong></td>
+                            <td class="microwave">جيجاهرتز (GHz)</td>
+                            <td class="laser">تيراهرتز (THz) - أعلى بـ 10,000 ضعف</td>
+                        </tr>
+                        <tr>
+                            <td><strong>السرعة</strong></td>
+                            <td class="microwave">تصل لـ 2Gbps بصعوبة وتكلفة</td>
+                            <td class="laser">تبدأ من 10Gbps وتصل للتيرابت</td>
+                        </tr>
+                        <tr>
+                            <td><strong>الأمان</strong></td>
+                            <td class="microwave">إشارة تتسرب ويسهل التشويش عليها</td>
+                            <td class="laser">إشارة مركزة وحصانة كاملة ضد التشويش</td>
+                        </tr>
+                        <tr>
+                            <td><strong>الكمون (Latency)</strong></td>
+                            <td class="microwave">متوسط</td>
+                            <td class="laser">أدنى زمن تأخير متاح عالمياً</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
             
-            <div class="turbulence-section">
-                <h3 class="subsection-title">
-                    <i class="fas fa-fire"></i>
-                    الاضطراب الجوي وظاهرة "الوميض"
-                </h3>
-                <div class="turbulence-content">
-                    <div class="turbulence-explanation">
-                        <p>
-                            عندما يسخن الهواء، تتكون جيوب هوائية ذات درجات حرارة وكثافة مختلفة 
-                            (تسمى الخلايا الدوامية أو Eddies). هذه الخلايا تعمل مثل "عدسات صغيرة" 
-                            عشوائية تغير مسار الضوء.
-                        </p>
-                        
-                        <div class="turbulence-effects">
-                            <div class="effect-item">
-                                <h4>تغير السعة (Scintillation)</h4>
-                                <p>تذبذب قوة الإشارة كما نرى في وميض النجوم</p>
-                            </div>
-                            <div class="effect-item">
-                                <h4>انزياح الحزمة (Beam Wander)</h4>
-                                <p>انزياح الشعاع بالكامل عن مساره إذا كانت الخلية أكبر من قطره</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="turbulence-visual">
-                        <div class="hot-air-demo">
-                            <div class="heat-source"></div>
-                            <div class="air-cells">
-                                <div class="eddy"></div>
-                                <div class="eddy"></div>
-                                <div class="eddy"></div>
-                            </div>
-                            <div class="laser-beam-distorted"></div>
-                        </div>
-                    </div>
-                </div>
+            <div class="section-title">
+                <h2>الجانب التطبيقي لمشروعنا (Laser Link Model)</h2>
             </div>
+            <div class="section-content">
+    <h2 style="color: #d32f2f; border-bottom: 2px solid #eee; padding-bottom: 10px;">الخوارزميات والتقنيات</h2>
+    
+    <ul style="line-height: 1.8; list-style-type: none; padding-right: 0;">
+        <li style="margin-bottom: 10px;"><strong>(IP Address):</strong> تخصيص عنوان IP فريد لكل جهاز (مثل 10.0.0.1) لتنظيم الشبكة وتسهيل توجيه البيانات.</li>
+        <li style="margin-bottom: 10px;"><strong>بروتوكول "TCP":</strong> نظام يضمن موثوقية النقل حيث يقوم البرج بالتأكد من وصول البيانات مما يضمن عدم ضياع الرسائل.</li>
+        <li style="margin-bottom: 10px;"><strong>التوجيه (Routing):</strong> عملية تحديد أفضل مسار لنقل حزم البيانات (Data Packets) عبر الأبراج من المصدر إلى الوجهة النهائية.</li>
+        <li style="margin-bottom: 10px;"><strong>بروتوكول "ICMP":</strong> أداة مدمجة في المشروع، تتيح للمستخدم إرسال حزم لقياس سرعة الاستجابة وحالة الاتصال بالأبراج الأخرى.</li>
+        <li style="margin-bottom: 10px;"><strong>السجلات (Logs):</strong> سجلات رقمية تلقائية توثق الأحداث، الأنشطة، والأخطاء التي تحدث داخل أنظمة الشبكات.</li>
+        <li style="margin-bottom: 10px;"><strong>التشفير:</strong> ترميز البيانات قبل إرسالها لضمان وصولها للمكان الصحيح.</li>
+        <li style="margin-bottom: 10px;"><strong>تأمين البيانات في الجو:</strong> حيث تعتمد على تقنية "Point-to-Point" التي تمنع اعتراض البيانات إلا بكسر خط الرؤية المباشر.</li>
+        <li style="margin-bottom: 10px;"><strong>التحديد الذكي (Smart Locking):</strong> تقوم الحساسات بتحديد مستقبل البرج المقابل بدقة وتثبيت الليزر فور التقاط الإشارة.</li>
+        <li style="margin-bottom: 10px;"><strong>ضبط الليزر اليدوي:</strong> تم تركيب قاعدة لتوجيه الليزر وضبط الاتجاه عبر مفك براغي بسهولة ودقة.</li>
+        <li style="margin-bottom: 10px;"><strong>الإرسال من الهاتف:</strong> إمكانية إرسال البيانات من الهاتف المتصل بالبرج الأول وعرض البيانات "المتلقاة ضوئياً" في شاشة أو هاتف البرج الثاني.</li>
+        <li style="margin-bottom: 10px;"><strong>الإشعارات:</strong> تنبيهات صوتية ومرئية فورية عند استلام بيانات جديدة.</li>
+        <li style="margin-bottom: 10px;"><strong>حالة الاستلام:</strong> مؤشرات ذكية تظهر بجانب الرسائل (انتظار، مستلم، فشل) لمتابعة تدفق البيانات لحظة بلحظة.</li>
+        <li style="margin-bottom: 10px;"><strong>شاشة العرض (OLED LED):</strong> واجهة رسومية متطورة تعرض البيانات، القوائم، وقوة الإشارة بوضوح عالٍ واستهلاك منخفض للطاقة.</li>
+        <li style="margin-bottom: 15px;"><strong>نظام إدارة الطاقة:</strong> دائرة تضمن ثبات الجهد للمحركات والمعالج، مما يحافظ على توازن الطاقة للأبراج والحماية من الشحنات الزائدة.</li>
+    </ul>
+
+    <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+
+    <div class="tech-summary" style="background-color: #030303cb; padding: 20px; border: 1px solid #e0e0e0; border-right: 6px solid #d32f2f; border-radius: 4px;">
+        <h3 style="margin-top: 0; color: #d32f2f;">الخلاصة التقنية:</h3>
+        <p style="font-size: 1.15em; line-height: 1.6; margin-bottom: 0;">
+            يُعد هذا المشروع محاكاة فيزيائية متكاملة لشبكة <strong>LAN</strong>، يطبق معايير العناوين والتوجيه لربط الأبراج عبر <strong>الليزر</strong> بدلاً من الكابلات وأجهزة الراديو التقليدية باستخدام ادوات بسطه جدا لكنها اثبتت جدارتها ..
+        </p>
+    </div>
+</div>
         </div>
     </section>
 
-    <!-- قسم الحلول الهندسية -->
-    <section id="solutions" class="section dark-section">
+    <!-- Applications Section -->
+    <section class="section">
         <div class="container">
-            <h2 class="section-title">
-                <span class="title-text">حلول هندسية</span>
-                <span class="title-highlight">للتحديات الجوية</span>
-            </h2>
-            
-            <div class="solutions-grid">
-                <div class="solution-card hybrid-solution">
-                    <div class="solution-icon">
-                        <i class="fas fa-random"></i>
-                    </div>
-                    <h3>النظام الهجين</h3>
-                    <div class="solution-tag">Hybrid FSO/RF</div>
-                    
-                    <div class="solution-description">
-                        <p>
-                            دمج نظام راديو (60GHz) كنسخة احتياطية. عند انقطاع الليزر، 
-                            يتحول النظام تلقائياً لموجات الراديو التي لا تتأثر بالضباب.
-                        </p>
-                        
-                        <div class="hybrid-diagram">
-                            <div class="hybrid-node fso-active">
-                                <i class="fas fa-broadcast-tower"></i>
-                                <span>FSO</span>
-                            </div>
-                            <div class="hybrid-switch">
-                                <i class="fas fa-exchange-alt"></i>
-                            </div>
-                            <div class="hybrid-node rf-standby">
-                                <i class="fas fa-wifi"></i>
-                                <span>RF 60GHz</span>
-                            </div>
-                        </div>
-                        
-                        <div class="solution-stats">
-                            <div class="stat">
-                                <span class="stat-value">99.999%</span>
-                                <span class="stat-label">نسبة التوفر</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-value">&lt; 50ms</span>
-                                <span class="stat-label">زمن التحويل</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="solution-card diversity-solution">
-                    <div class="solution-icon">
-                        <i class="fas fa-layer-group"></i>
-                    </div>
-                    <h3>تعدد المسارات</h3>
-                    <div class="solution-tag">Spatial Diversity</div>
-                    
-                    <div class="solution-description">
-                        <p>
-                            إرسال 4 أو 8 أشعة متوازية من نفس الجهاز. إذا اعترض طائر أحد الأشعة، 
-                            تصل الأشعة الأخرى للمستقبل.
-                        </p>
-                        
-                        <div class="diversity-demo">
-                            <div class="beam-source-multi">
-                                <div class="multi-beam"></div>
-                                <div class="multi-beam"></div>
-                                <div class="multi-beam"></div>
-                                <div class="multi-beam"></div>
-                            </div>
-                            
-                            <div class="obstacle">
-                                <i class="fas fa-dove"></i>
-                            </div>
-                            
-                            <div class="beam-target-multi">
-                                <div class="beam-received active"></div>
-                                <div class="beam-received active"></div>
-                                <div class="beam-received"></div>
-                                <div class="beam-received active"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="redundancy-info">
-                            <i class="fas fa-info-circle"></i>
-                            <span>3 من 4 حزم وصلت بنجاح - البيانات كاملة</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="solution-card adaptive-solution">
-                    <div class="solution-icon">
-                        <i class="fas fa-sliders-h"></i>
-                    </div>
-                    <h3>التحكم الآلي في الطاقة</h3>
-                    <div class="solution-tag">Automatic Power Control</div>
-                    
-                    <div class="solution-description">
-                        <p>
-                            في الجو الصافي يعمل الليزر بطاقة منخفضة. عند اكتشاف ضعف في الإشارة، 
-                            يرفع الجهاز طاقة الليزر تلقائياً "لاختراق" العائق الجوي.
-                        </p>
-                        
-                        <div class="power-control-demo">
-                            <div class="weather-indicator clear">
-                                <i class="fas fa-sun"></i>
-                                <span>جو صاف</span>
-                            </div>
-                            
-                            <div class="power-slider">
-                                <div class="slider-track">
-                                    <div class="slider-fill" id="powerFill" style="width: 30%"></div>
-                                </div>
-                                <div class="slider-labels">
-                                    <span>منخفض</span>
-                                    <span>متوسط</span>
-                                    <span>عالٍ</span>
-                                    <span>قصوى</span>
-                                </div>
-                            </div>
-                            
-                            <div class="weather-indicator foggy">
-                                <i class="fas fa-cloud"></i>
-                                <span>ضباب كثيف</span>
-                            </div>
-                        </div>
-                        
-                        <div class="adaptive-rate">
-                            <h4>التكيف مع معدل البيانات:</h4>
-                            <div class="rate-levels">
-                                <div class="rate-level active">
-                                    <span>10 Gbps</span>
-                                    <small>جو صاف</small>
-                                </div>
-                                <div class="rate-level">
-                                    <span>5 Gbps</span>
-                                    <small>مطر</small>
-                                </div>
-                                <div class="rate-level">
-                                    <span>1 Gbps</span>
-                                    <small>ضباب</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="section-title">
+                <h2>تطبيقات لا حصر لها</h2>
             </div>
-            
-            <div class="advanced-solutions">
-                <h3 class="subsection-title">
-                    <i class="fas fa-cogs"></i>
-                    حلول متقدمة إضافية
-                </h3>
-                
-                <div class="advanced-grid">
-                    <div class="advanced-card">
-                        <div class="advanced-header">
-                            <h4>
-                                <i class="fas fa-robot"></i>
-                                البصريات التكيفية
-                            </h4>
-                            <span class="tech-tag">Adaptive Optics</span>
-                        </div>
-                        <p>
-                            مرايا مرنة تغير شكلها آلاف المرات في الثانية لتعويض الانحرافات الجوية
-                        </p>
+            <div class="section-content">
+                <div class="applications-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px;">
+                    <div style="background-color: rgba(139, 0, 0, 0.2); padding: 20px; border-radius: 8px; text-align: center; border: 1px solid rgba(139, 0, 0, 0.5);">
+                        <i class="fas fa-satellite" style="font-size: 2.5rem; color: var(--accent-gold); margin-bottom: 15px;"></i>
+                        <h3 style="color: var(--accent-gold); margin-bottom: 10px;">الربط بين الأقمار الصناعية</h3>
+                        <p>كما تفعل Starlink في الفضاء</p>
                     </div>
                     
-                    <div class="advanced-card">
-                        <div class="advanced-header">
-                            <h4>
-                                <i class="fas fa-code"></i>
-                                تصحيح الأخطاء الأمامي
-                            </h4>
-                            <span class="tech-tag">FEC</span>
-                        </div>
-                        <p>
-                            خوارزميات تضيف بيانات إضافية للرسالة لاستنتاج البيانات المفقودة
-                        </p>
+                    <div style="background-color: rgba(139, 0, 0, 0.2); padding: 20px; border-radius: 8px; text-align: center; border: 1px solid rgba(139, 0, 0, 0.5);">
+                        <i class="fas fa-building" style="font-size: 2.5rem; color: var(--accent-gold); margin-bottom: 15px;"></i>
+                        <h3 style="color: var(--accent-gold); margin-bottom: 10px;">الميل الأخير (The Last Mile)</h3>
+                        <p>إيصال سرعة الفايبر للمباني التي يصعب مد كابلات إليها</p>
                     </div>
                     
-                    <div class="advanced-card">
-                        <div class="advanced-header">
-                            <h4>
-                                <i class="fas fa-wave-square"></i>
-                                تعديل متقدم للإشارة
-                            </h4>
-                            <span class="tech-tag">PPM / BPSK</span>
-                        </div>
-                        <p>
-                            تقنيات تعديل متقدمة لمقاومة التشويش وتحسين كفاءة الطاقة
-                        </p>
+                    <div style="background-color: rgba(139, 0, 0, 0.2); padding: 20px; border-radius: 8px; text-align: center; border: 1px solid rgba(139, 0, 0, 0.5);">
+                        <i class="fas fa-shield-alt" style="font-size: 2.5rem; color: var(--accent-gold); margin-bottom: 15px;"></i>
+                        <h3 style="color: var(--accent-gold); margin-bottom: 10px;">الاتصالات العسكرية والمصرفية</h3>
+                        <p>لنقل البيانات السرية عبر قنوات ضوئية غير قابلة للاختراق</p>
                     </div>
                     
-                    <div class="advanced-card">
-                        <div class="advanced-header">
-                            <h4>
-                                <i class="fas fa-route"></i>
-                                إعادة التوجيه الشبكي
-                            </h4>
-                            <span class="tech-tag">Mesh Network</span>
-                        </div>
-                        <p>
-                            شبكة من العقد المتعددة لتوفير مسارات بديلة عند انقطاع المسار الرئيسي
-                        </p>
+                    <div style="background-color: rgba(139, 0, 0, 0.2); padding: 20px; border-radius: 8px; text-align: center; border: 1px solid rgba(139, 0, 0, 0.5);">
+                        <i class="fas fa-first-aid" style="font-size: 2.5rem; color: var(--accent-gold); margin-bottom: 15px;"></i>
+                        <h3 style="color: var(--accent-gold); margin-bottom: 10px;">الطوارئ والكوارث</h3>
+                        <p>إعادة الاتصال للمناطق المنكوبة في دقائق</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- قسم المقارنات التقنية -->
-    <section id="comparison" class="section">
+    <!-- Quote Section -->
+    <section class="quote-section">
         <div class="container">
-            <h2 class="section-title">
-                <span class="title-text">مقارنة تقنية</span>
-                <span class="title-highlight">FSO مقابل التقنيات الأخرى</span>
-            </h2>
-            
-            <div class="comparison-tabs">
-                <div class="tab-buttons">
-                    <button class="tab-button active" data-tab="vs-wifi">
-                        <i class="fas fa-wifi"></i>
-                        vs الواي فاي
-                    </button>
-                    <button class="tab-button" data-tab="vs-fiber">
-                        <i class="fas fa-network-wired"></i>
-                        vs الألياف
-                    </button>
-                    <button class="tab-button" data-tab="vs-rf">
-                        <i class="fas fa-broadcast-tower"></i>
-                        vs الراديو
-                    </button>
-                    <button class="tab-button" data-tab="vs-microwave">
-                        <i class="fas fa-satellite"></i>
-                        vs الميكروويف
-                    </button>
-                </div>
-                
-                <div class="tab-content active" id="vs-wifi">
-                    <div class="comparison-table">
-                        <div class="table-header">
-                            <div class="tech-column">
-                                <h3>الخاصية</h3>
-                            </div>
-                            <div class="tech-column fso-column">
-                                <div class="tech-logo">
-                                    <i class="fas fa-broadcast-tower"></i>
-                                    <span>FSO</span>
-                                </div>
-                            </div>
-                            <div class="tech-column other-column">
-                                <div class="tech-logo">
-                                    <i class="fas fa-wifi"></i>
-                                    <span>واي فاي</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="table-body">
-                            <div class="table-row">
-                                <div class="property">النطاق الترددي</div>
-                                <div class="value fso-best">
-                                    <span>عريض جداً (تراهرتز)</span>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                </div>
-                                <div class="value other-value">
-                                    <span>محدود (جيجاهرتز)</span>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="table-row">
-                                <div class="property">التداخل الكهرومغناطيسي</div>
-                                <div class="value fso-best">
-                                    <span>محصن تماماً</span>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                </div>
-                                <div class="value other-value">
-                                    <span>يتأثر بشدة</span>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="table-row">
-                                <div class="property">الأمان</div>
-                                <div class="value fso-best">
-                                    <span>ممتاز (شعاع ضيق)</span>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                </div>
-                                <div class="value other-value">
-                                    <span>ضعيف (ينتشر في كل اتجاه)</span>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="table-row">
-                                <div class="property">التأخير (Latency)</div>
-                                <div class="value fso-best">
-                                    <span>منخفض جداً (&lt; 1ms)</span>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                </div>
-                                <div class="value other-value">
-                                    <span>أعلى (5-20ms)</span>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="table-row">
-                                <div class="property">التكلفة</div>
-                                <div class="value fso-best">
-                                    <span>منخفضة (بدون تراخيص)</span>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                </div>
-                                <div class="value other-value">
-                                    <span>منخفضة إلى متوسطة</span>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="tab-content" id="vs-fiber">
-                    <div class="comparison-table">
-                        <div class="table-header">
-                            <div class="tech-column">
-                                <h3>الخاصية</h3>
-                            </div>
-                            <div class="tech-column fso-column">
-                                <div class="tech-logo">
-                                    <i class="fas fa-broadcast-tower"></i>
-                                    <span>FSO</span>
-                                </div>
-                            </div>
-                            <div class="tech-column other-column">
-                                <div class="tech-logo">
-                                    <i class="fas fa-network-wired"></i>
-                                    <span>الألياف البصرية</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="table-body">
-                            <div class="table-row">
-                                <div class="property">السرعة القصوى</div>
-                                <div class="value fso-best">
-                                    <span>100+ Gbps</span>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                </div>
-                                <div class="value other-value">
-                                    <span>100+ Gbps</span>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="table-row">
-                                <div class="property">التكلفة الإنشائية</div>
-                                <div class="value fso-best">
-                                    <span>منخفضة (آلاف الدولارات)</span>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                </div>
-                                <div class="value other-value">
-                                    <span>عالية جداً (مئات الآلاف)</span>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="table-row">
-                                <div class="property">وقت التركيب</div>
-                                <div class="value fso-best">
-                                    <span>ساعات إلى أيام</span>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                </div>
-                                <div class="value other-value">
-                                    <span>أسابيع إلى شهور</span>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="table-row">
-                                <div class="property">التأثر بالطقس</div>
-                                <div class="value fso-best">
-                                    <span>يتأثر بالضباب فقط</span>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                    </div>
-                                </div>
-                                <div class="value other-value">
-                                    <span>لا يتأثر</span>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="table-row">
-                                <div class="property">المرونة في المسارات</div>
-                                <div class="value fso-best">
-                                    <span>عالية (خط رؤية مباشر)</span>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                    </div>
-                                </div>
-                                <div class="value other-value">
-                                    <span>منخفضة (مسار ثابت)</span>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="table-row">
-                                <div class="property">الصيانة</div>
-                                <div class="value fso-best">
-                                    <span>عن بعد (سهلة)</span>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                </div>
-                                <div class="value other-value">
-                                    <span>يدوية (معقدة)</span>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="comparison-summary">
-                        <h4>الخلاصة:</h4>
-                        <p>تتفوق FSO في المرونة والسرعة في التركيب والتكلفة، بينما تتفوق الألياف في الموثوقية وعدم التأثر بالطقس.</p>
-                    </div>
-                </div>
-                
-                <div class="tab-content" id="vs-rf">
-                    <div class="comparison-table">
-                        <div class="table-header">
-                            <div class="tech-column">
-                                <h3>الخاصية</h3>
-                            </div>
-                            <div class="tech-column fso-column">
-                                <div class="tech-logo">
-                                    <i class="fas fa-broadcast-tower"></i>
-                                    <span>FSO</span>
-                                </div>
-                            </div>
-                            <div class="tech-column other-column">
-                                <div class="tech-logo">
-                                    <i class="fas fa-broadcast-tower"></i>
-                                    <span>الراديو التقليدي</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="table-body">
-                            <div class="table-row">
-                                <div class="property">السعة الترددية</div>
-                                <div class="value fso-best">
-                                    <span>غير محدودة (ضوء مرئي)</span>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                </div>
-                                <div class="value other-value">
-                                    <span>محدودة (ترددات مرخصة)</span>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="table-row">
-                                <div class="property">التداخل الكهرومغناطيسي</div>
-                                <div class="value fso-best">
-                                    <span>لا يوجد</span>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                </div>
-                                <div class="value other-value">
-                                    <span>عالي جداً</span>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="table-row">
-                                <div class="property">الأمان</div>
-                                <div class="value fso-best">
-                                    <span>ممتاز (شعاع ضيق)</span>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                </div>
-                                <div class="value other-value">
-                                    <span>ضعيف (ينتشر في كل اتجاه)</span>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="table-row">
-                                <div class="property">التراخيص</div>
-                                <div class="value fso-best">
-                                    <span>غير مطلوبة</span>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                </div>
-                                <div class="value other-value">
-                                    <span>مطلوبة ومكلفة</span>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="table-row">
-                                <div class="property">المسافة القصوى</div>
-                                <div class="value fso-best">
-                                    <span>حتى 10 كم</span>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                    </div>
-                                </div>
-                                <div class="value other-value">
-                                    <span>حتى 50 كم</span>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="table-row">
-                                <div class="property">استهلاك الطاقة</div>
-                                <div class="value fso-best">
-                                    <span>منخفض (واطات قليلة)</span>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                </div>
-                                <div class="value other-value">
-                                    <span>عالٍ (عشرات الواطات)</span>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="comparison-summary">
-                        <h4>الخلاصة:</h4>
-                        <p>تتفوق FSO في السعة الترددية والأمان وعدم الحاجة لتراخيص، بينما يتفوق الراديو التقليدي في المدى البعيد.</p>
-                    </div>
-                </div>
-                
-                <div class="tab-content" id="vs-microwave">
-                    <div class="comparison-table">
-                        <div class="table-header">
-                            <div class="tech-column">
-                                <h3>الخاصية</h3>
-                            </div>
-                            <div class="tech-column fso-column">
-                                <div class="tech-logo">
-                                    <i class="fas fa-broadcast-tower"></i>
-                                    <span>FSO</span>
-                                </div>
-                            </div>
-                            <div class="tech-column other-column">
-                                <div class="tech-logo">
-                                    <i class="fas fa-satellite"></i>
-                                    <span>الميكروويف</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="table-body">
-                            <div class="table-row">
-                                <div class="property">عرض النطاق</div>
-                                <div class="value fso-best">
-                                    <span>عريض جداً (تراهرتز)</span>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                </div>
-                                <div class="value other-value">
-                                    <span>محدود (ميجاهرتز)</span>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="table-row">
-                                <div class="property">سرعة التركيب</div>
-                                <div class="value fso-best">
-                                    <span>سريع (ساعات)</span>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                </div>
-                                <div class="value other-value">
-                                    <span>متوسط (أيام)</span>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="table-row">
-                                <div class="property">التأثر بالمطر</div>
-                                <div class="value fso-best">
-                                    <span>تأثير طفيف</span>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                </div>
-                                <div class="value other-value">
-                                    <span>تأثير كبير (Rain Fade)</span>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="table-row">
-                                <div class="property">التأخير (Latency)</div>
-                                <div class="value fso-best">
-                                    <span>منخفض جداً (&lt; 1ms)</span>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                </div>
-                                <div class="value other-value">
-                                    <span>منخفض (1-5ms)</span>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="table-row">
-                                <div class="property">التكلفة التشغيلية</div>
-                                <div class="value fso-best">
-                                    <span>منخفضة</span>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                </div>
-                                <div class="value other-value">
-                                    <span>عالية (تراخيص وصيانة)</span>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="table-row">
-                                <div class="property">سهولة التوسع</div>
-                                <div class="value fso-best">
-                                    <span>سهل وسريع</span>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                </div>
-                                <div class="value other-value">
-                                    <span>معقد (يتطلب تراخيص جديدة)</span>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="comparison-summary">
-                        <h4>الخلاصة:</h4>
-                        <p>تتفوق FSO في عرض النطاق وسرعة التركيب والتكلفة التشغيلية، بينما يعاني الميكروويف من تأثير المطر والحاجة لتراخيص.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="link-budget-section">
-                <h3 class="subsection-title">
-                    <i class="fas fa-calculator"></i>
-                    الميزانية الضوئية للرابط (Link Budget)
-                </h3>
-                
-                <div class="budget-calculator">
-                    <div class="budget-formula">
-                        <div class="formula-display">
-                            $$P_{Received} = P_{Transmitted} \times \frac{A_{Receiver}}{(\theta \times L)^2} \times e^{-\alpha L}$$
-                        </div>
-                        <div class="formula-legend">
-                            <div class="legend-item">
-                                <span class="symbol">P</span>
-                                <span class="meaning">الطاقة (المرسلة والمستقبلة)</span>
-                            </div>
-                            <div class="legend-item">
-                                <span class="symbol">A</span>
-                                <span class="meaning">مساحة عدسة المستقبل</span>
-                            </div>
-                            <div class="legend-item">
-                                <span class="symbol">θ</span>
-                                <span class="meaning">زاوية تباعد الشعاع</span>
-                            </div>
-                            <div class="legend-item">
-                                <span class="symbol">L</span>
-                                <span class="meaning">المسافة بين النقطتين</span>
-                            </div>
-                            <div class="legend-item">
-                                <span class="symbol">α</span>
-                                <span class="meaning">معامل التوهين الجوي</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="budget-calc">
-                        <h4>حاسبة الميزانية الضوئية</h4>
-                        
-                        <div class="calc-inputs">
-                            <div class="input-group">
-                                <label for="distance">المسافة (كم)</label>
-                                <input type="range" id="distance" min="0.1" max="10" step="0.1" value="2">
-                                <span id="distanceValue">2 كم</span>
-                            </div>
-                            
-                            <div class="input-group">
-                                <label for="weather">الظروف الجوية</label>
-                                <select id="weather">
-                                    <option value="0.2">جو صاف</option>
-                                    <option value="5">مطر خفيف</option>
-                                    <option value="20">مطر غزير</option>
-                                    <option value="50">ضباب خفيف</option>
-                                    <option value="100">ضباب كثيف</option>
-                                </select>
-                            </div>
-                            
-                            <div class="input-group">
-                                <label for="power">قوة الإرسال (dBm)</label>
-                                <input type="range" id="power" min="0" max="30" step="1" value="20">
-                                <span id="powerValue">20 dBm</span>
-                            </div>
-                        </div>
-                        
-                        <div class="calc-results">
-                            <div class="result-item">
-                                <span class="result-label">قوة الاستقبال:</span>
-                                <span class="result-value" id="rxPower">-32.5 dBm</span>
-                            </div>
-                            <div class="result-item">
-                                <span class="result-label">معدل الخطأ (BER):</span>
-                                <span class="result-value" id="berRate">1.2 × 10⁻¹⁰</span>
-                            </div>
-                            <div class="result-item">
-                                <span class="result-label">نسبة التوفر:</span>
-                                <span class="result-value" id="availability">99.98%</span>
-                            </div>
-                        </div>
-                        
-                        <button class="btn btn-calculate">
-                            <i class="fas fa-calculator"></i>
-                            احسب من جديد
-                        </button>
-                    </div>
-                </div>
+            <div class="quote">
+                نحن في Laser Link نؤمن بأن المستقبل يُصنع بنبضات من ضوء. تقنيتنا ليست مجرد بديل، بل هي القفزة القادمة نحو عالم أكثر سرعة، أماناً، وحرية من الكابلات.
             </div>
         </div>
     </section>
 
-    <!-- قسم فرق العمل والتركيب -->
-    <section id="team" class="section dark-section">
+    <!-- Team Section -->
+    <section class="section" id="team">
         <div class="container">
-            <h2 class="section-title">
-                <span class="title-text">فرق العمل</span>
-                <span class="title-highlight">وتركيب الأنظمة</span>
-            </h2>
-            
-            <div class="team-intro">
-                <p class="lead">
-                    يختلف فريق تركيب وتشغيل أنظمة FSO بشكل كبير عن الفرق التقليدية للألياف البصرية أو أنظمة الراديو. 
-                    يتطلب فريق متخصص ومتكامل لضمان نجاح المشروع.
-                </p>
+            <div class="section-title">
+                <h2>فريق العمل</h2>
             </div>
-            
-            <div class="team-comparison">
-                <h3 class="subsection-title">
-                    <i class="fas fa-users"></i>
-                    مقارنة فرق العمل بين التقنيات
-                </h3>
-                
-                <div class="comparison-cards">
-                    <div class="team-card fso-team">
-                        <div class="team-header">
-                            <div class="team-icon">
-                                <i class="fas fa-satellite-dish"></i>
-                            </div>
-                            <h3>فريق تركيب FSO</h3>
-                            <span class="team-size">3-4 أشخاص</span>
-                        </div>
-                        
-                        <div class="team-body">
-                            <h4>التخصصات المطلوبة:</h4>
-                            <ul class="team-list">
-                                <li>
-                                    <i class="fas fa-user-tie"></i>
-                                    <div>
-                                        <strong>مهندس بصريات</strong>
-                                        <small>تخصص دقيق في البصريات والليزر</small>
-                                    </div>
-                                </li>
-                                <li>
-                                    <i class="fas fa-user-cog"></i>
-                                    <div>
-                                        <strong>فني تركيب متخصص</strong>
-                                        <small>خبرة في المحاذاة البصرية الدقيقة</small>
-                                    </div>
-                                </li>
-                                <li>
-                                    <i class="fas fa-code"></i>
-                                    <div>
-                                        <strong>مهندس برمجيات أنظمة</strong>
-                                        <small>برمجة أنظمة التتبع والتحكم</small>
-                                    </div>
-                                </li>
-                                <li>
-                                    <i class="fas fa-cloud-sun"></i>
-                                    <div>
-                                        <strong>خبير أرصاد جوية</strong>
-                                        <small>تحليل الظروف الجوية المحلية</small>
-                                    </div>
-                                </li>
-                            </ul>
-                            
-                            <div class="team-stats">
-                                <div class="team-stat">
-                                    <span class="stat-value">2-4 ساعات</span>
-                                    <span class="stat-label">وقت التركيب للرابط</span>
-                                </div>
-                                <div class="team-stat">
-                                    <span class="stat-value">عن بعد</span>
-                                    <span class="stat-label">نسبة كبيرة من الصيانة</span>
-                                </div>
-                            </div>
-                        </div>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-icon">
+                        <i class="fas fa-user-graduate"></i>
                     </div>
-                    
-                    <div class="team-card fiber-team">
-                        <div class="team-header">
-                            <div class="team-icon">
-                                <i class="fas fa-network-wired"></i>
-                            </div>
-                            <h3>فريق تركيب الألياف</h3>
-                            <span class="team-size">8-12 شخص</span>
-                        </div>
-                        
-                        <div class="team-body">
-                            <h4>التخصصات المطلوبة:</h4>
-                            <ul class="team-list">
-                                <li>
-                                    <i class="fas fa-hard-hat"></i>
-                                    <div>
-                                        <strong>طاقم حفر وتكسير</strong>
-                                        <small>عمال مدنيون للحفر في الشوارع</small>
-                                    </div>
-                                </li>
-                                <li>
-                                    <i class="fas fa-tools"></i>
-                                    <div>
-                                        <strong>فنيو لحام ألياف</strong>
-                                        <small>متخصصون في لحام الألياف الدقيق</small>
-                                    </div>
-                                </li>
-                                <li>
-                                    <i class="fas fa-truck"></i>
-                                    <div>
-                                        <strong>مشغلو معدات ثقيلة</strong>
-                                        <small>لشحن ونقل الكابلات</small>
-                                    </div>
-                                </li>
-                                <li>
-                                    <i class="fas fa-file-contract"></i>
-                                    <div>
-                                        <strong>منسقو تصاريح</strong>
-                                        <small>للتعامل مع البلديات والجهات</small>
-                                    </div>
-                                </li>
-                            </ul>
-                            
-                            <div class="team-stats">
-                                <div class="team-stat">
-                                    <span class="stat-value">أسابيع إلى شهور</span>
-                                    <span class="stat-label">وقت التركيب للكيلومتر</span>
-                                </div>
-                                <div class="team-stat">
-                                    <span class="stat-value">موقع العمل</span>
-                                    <span class="stat-label">كل الصيانة في الموقع</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="team-card radio-team">
-                        <div class="team-header">
-                            <div class="team-icon">
-                                <i class="fas fa-broadcast-tower"></i>
-                            </div>
-                            <h3>فريق تركيب الراديو</h3>
-                            <span class="team-size">4-6 أشخاص</span>
-                        </div>
-                        
-                        <div class="team-body">
-                            <h4>التخصصات المطلوبة:</h4>
-                            <ul class="team-list">
-                                <li>
-                                    <i class="fas fa-tower-cell"></i>
-                                    <div>
-                                        <strong>مهندس ترددات راديوية</strong>
-                                        <small>خبير في الطيف الترددي</small>
-                                    </div>
-                                </li>
-                                <li>
-                                    <i class="fas fa-bolt"></i>
-                                    <div>
-                                        <strong>فني تركيب هوائيات</strong>
-                                        <small>تركيب الهوائيات الثقيلة</small>
-                                    </div>
-                                </li>
-                                <li>
-                                    <i class="fas fa-file-signature"></i>
-                                    <div>
-                                        <strong>منسق تراخيص</strong>
-                                        <small>للحصول على تراخيص الترددات</small>
-                                    </div>
-                                </li>
-                                <li>
-                                    <i class="fas fa-chart-line"></i>
-                                    <div>
-                                        <strong>خبير قياسات</strong>
-                                        <small>قياس شدة الإشارة والتداخل</small>
-                                    </div>
-                                </li>
-                            </ul>
-                            
-                            <div class="team-stats">
-                                <div class="team-stat">
-                                    <span class="stat-value">2-3 أيام</span>
-                                    <span class="stat-label">وقت التركيب للرابط</span>
-                                </div>
-                                <div class="team-stat">
-                                    <span class="stat-value">موقع العمل</span>
-                                    <span class="stat-label">معظم الصيانة في الموقع</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <h4>أسامة خالد الهندواني</h4>
+                    <p>طالب مشروع</p>
                 </div>
-            </div>
-            
-            <div class="installation-process">
-                <h3 class="subsection-title">
-                    <i class="fas fa-tasks"></i>
-                    مراحل تركيب نظام FSO
-                </h3>
                 
-                <div class="process-timeline">
-                    <div class="process-step">
-                        <div class="step-number">1</div>
-                        <div class="step-content">
-                            <h4>الدراسة والتحليل المبدئي</h4>
-                            <p>تحليل المسار، دراسة الظروف الجوية، حساب ميزانية الرابط</p>
-                            <div class="step-duration">
-                                <i class="fas fa-clock"></i>
-                                <span>1-2 يوم</span>
-                            </div>
-                        </div>
+                <div class="team-member">
+                    <div class="member-icon">
+                        <i class="fas fa-user-graduate"></i>
                     </div>
-                    
-                    <div class="process-step">
-                        <div class="step-number">2</div>
-                        <div class="step-content">
-                            <h4>التركيب الفيزيائي</h4>
-                            <p>تثبيت الأجهزة على الأسطح، توصيل الطاقة والشبكة</p>
-                            <div class="step-duration">
-                                <i class="fas fa-clock"></i>
-                                <span>2-3 ساعات</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="process-step">
-                        <div class="step-number">3</div>
-                        <div class="step-content">
-                            <h4>المحاذاة الدقيقة</h4>
-                            <p>ضبط المحاذاة البصرية باستخدام أدوات الليزر الخاصة</p>
-                            <div class="step-duration">
-                                <i class="fas fa-clock"></i>
-                                <span>30-60 دقيقة</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="process-step">
-                        <div class="step-number">4</div>
-                        <div class="step-content">
-                            <h4>الضبط والاختبار</h4>
-                            <p>ضبط إعدادات النظام، اختبار سرعة واستقرار الرابط</p>
-                            <div class="step-duration">
-                                <i class="fas fa-clock"></i>
-                                <span>1-2 ساعة</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="process-step">
-                        <div class="step-number">5</div>
-                        <div class="step-content">
-                            <h4>التسليم والتدريب</h4>
-                            <p>تسليم النظام مع دليل المستخدم، تدريب فريق الصيانة</p>
-                            <div class="step-duration">
-                                <i class="fas fa-clock"></i>
-                                <span>1-2 ساعة</span>
-                            </div>
-                        </div>
-                    </div>
+                    <h4>محمد حبيب العضلي</h4>
+                    <p>طالب مشروع</p>
                 </div>
-            </div>
-            
-            <div class="cost-comparison">
-                <h3 class="subsection-title">
-                    <i class="fas fa-money-bill-wave"></i>
-                    مقارنة التكاليف بين التقنيات
-                </h3>
                 
-                <div class="cost-chart-container">
-                    <div class="cost-chart">
-                        <div class="cost-bar">
-                            <div class="cost-label">FSO</div>
-                            <div class="cost-bar-fill" style="width: 25%; background: var(--accent-green);">
-                                <span class="cost-value">$5,000 - $15,000</span>
-                            </div>
-                            <div class="cost-percentage">25%</div>
-                        </div>
-                        
-                        <div class="cost-bar">
-                            <div class="cost-label">الألياف البصرية</div>
-                            <div class="cost-bar-fill" style="width: 100%; background: var(--primary-red);">
-                                <span class="cost-value">$20,000 - $100,000+</span>
-                            </div>
-                            <div class="cost-percentage">100%</div>
-                        </div>
-                        
-                        <div class="cost-bar">
-                            <div class="cost-label">الراديو التقليدي</div>
-                            <div class="cost-bar-fill" style="width: 60%; background: var(--accent-blue);">
-                                <span class="cost-value">$12,000 - $30,000</span>
-                            </div>
-                            <div class="cost-percentage">60%</div>
-                        </div>
-                        
-                        <div class="cost-bar">
-                            <div class="cost-label">الميكروويف</div>
-                            <div class="cost-bar-fill" style="width: 80%; background: var(--accent-orange);">
-                                <span class="cost-value">$16,000 - $40,000</span>
-                            </div>
-                            <div class="cost-percentage">80%</div>
-                        </div>
+                <div class="team-member">
+                    <div class="member-icon">
+                        <i class="fas fa-user-graduate"></i>
                     </div>
-                    
-                    <div class="cost-legend">
-                        <p>التكلفة النسبية لكل كيلومتر من الربط بين مبنيين على مسافة 2 كم</p>
-                        <div class="legend-items">
-                            <div class="legend-item">
-                                <span class="legend-color" style="background: var(--accent-green);"></span>
-                                <span class="legend-text">FSO: أقل تكلفة وسرعة تركيب</span>
-                            </div>
-                            <div class="legend-item">
-                                <span class="legend-color" style="background: var(--primary-red);"></span>
-                                <span class="legend-text">الألياف: أعلى تكلفة وتحتاج تصاريح</span>
-                            </div>
-                            <div class="legend-item">
-                                <span class="legend-color" style="background: var(--accent-blue);"></span>
-                                <span class="legend-text">الراديو: تكلفة متوسطة، تحتاج تراخيص</span>
-                            </div>
-                            <div class="legend-item">
-                                <span class="legend-color" style="background: var(--accent-orange);"></span>
-                                <span class="legend-text">الميكروويف: تكلفة عالية، صيانة معقدة</span>
-                            </div>
-                        </div>
-                    </div>
+                    <h4>سهيل يحيى النجدي</h4>
+                    <p>طالب مشروع</p>
                 </div>
-            </div>
-            
-            <div class="team-advantages">
-                <h3 class="subsection-title">
-                    <i class="fas fa-award"></i>
-                    مزايا فريق عمل FSO
-                </h3>
                 
-                <div class="advantages-grid">
-                    <div class="advantage-card">
-                        <div class="advantage-icon">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
-                        <h4>تخصص عالي</h4>
-                        <p>فريق متخصص في البصريات والليزر بدلاً من الفرق العامة</p>
+                <div class="team-member supervisor">
+                    <div class="member-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
                     </div>
-                    
-                    <div class="advantage-card">
-                        <div class="advantage-icon">
-                            <i class="fas fa-laptop-house"></i>
-                        </div>
-                        <h4>عمل عن بعد</h4>
-                        <p>70% من الصيانة تتم عن بعد دون زيارة الموقع</p>
-                    </div>
-                    
-                    <div class="advantage-card">
-                        <div class="advantage-icon">
-                            <i class="fas fa-shipping-fast"></i>
-                        </div>
-                        <h4>سرعة الاستجابة</h4>
-                        <p>فريق صغير يمكنه الانتقال بسرعة بين المواقع</p>
-                    </div>
-                    
-                    <div class="advantage-card">
-                        <div class="advantage-icon">
-                            <i class="fas fa-robot"></i>
-                        </div>
-                        <h4>أتمتة عالية</h4>
-                        <p>أنظمة ذكية تقلل من الحاجة للتدخل البشري</p>
-                    </div>
+                    <h4>عبدالسلام خاقو</h4>
+                    <p>مشرف المشروع</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- قسم المستقبل -->
-    <section id="future" class="section dark-section">
-        <div class="container">
-            <h2 class="section-title">
-                <span class="title-text">مستقبل</span>
-                <span class="title-highlight">الاتصالات الكمومية وفضاء الإنترنت</span>
-            </h2>
-            
-            <div class="timeline">
-                <div class="timeline-item present">
-                    <div class="timeline-date">الآن</div>
-                    <div class="timeline-content">
-                        <div class="timeline-icon">
-                            <i class="fas fa-city"></i>
-                        </div>
-                        <h3>المدن الذكية والجيل الخامس</h3>
-                        <p>FSO كعمود فقري لربط أبراج 5G في المدن الذكية</p>
-                    </div>
-                </div>
-                
-                <div class="timeline-item near-future">
-                    <div class="timeline-date">2025-2030</div>
-                    <div class="timeline-content">
-                        <div class="timeline-icon">
-                            <i class="fas fa-satellite"></i>
-                        </div>
-                        <h3>الإنترنت الفضائي الليزري</h3>
-                        <p>ربط أقمار ستارلينك ببعضها عبر الليزر لتقليل زمن الاستجابة</p>
-                    </div>
-                </div>
-                
-                <div class="timeline-item quantum-future">
-                    <div class="timeline-date">2030-2040</div>
-                    <div class="timeline-content">
-                        <div class="timeline-icon">
-                            <i class="fas fa-atom"></i>
-                        </div>
-                        <h3>الاتصالات الكمومية</h3>
-                        <p>استخدام FSO لنقل الفوتونات المشتبكة لشبكات تشفير غير قابلة للاختراق</p>
-                    </div>
-                </div>
-                
-                <div class="timeline-item deep-future">
-                    <div class="timeline-date">ما بعد 2040</div>
-                    <div class="timeline-content">
-                        <div class="timeline-icon">
-                            <i class="fas fa-rocket"></i>
-                        </div>
-                        <h3>الاتصالات بين الكواكب</h3>
-                        <p>أنظمة FSO للتواصل مع المستعمرات على المريخ والقمر</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="future-applications">
-                <h3 class="subsection-title">
-                    <i class="fas fa-lightbulb"></i>
-                    تطبيقات مستقبلية متقدمة
-                </h3>
-                
-                <div class="applications-grid">
-                    <div class="app-card qkd-app">
-                        <div class="app-icon">
-                            <i class="fas fa-lock"></i>
-                        </div>
-                        <h4>التوزيع الكمومي للمفاتيح</h4>
-                        <p class="app-tag">Quantum Key Distribution</p>
-                        <p>استخدام FSO لنقل التشفير الكمومي بين الأقمار الصناعية والأرض</p>
-                        <div class="app-status">
-                            <span class="status active">قيد التطوير</span>
-                        </div>
-                    </div>
-                    
-                    <div class="app-card deep-space-app">
-                        <div class="app-icon">
-                            <i class="fas fa-user-astronaut"></i>
-                        </div>
-                        <h4>الاتصالات الفضائية العميقة</h4>
-                        <p class="app-tag">Deep Space Optical Comm</p>
-                        <p>ناسا تستخدم FSO للتواصل مع مركبات فضائية على مسافة ملايين الكيلومترات</p>
-                        <div class="app-status">
-                            <span class="status implemented">مطبق حالياً</span>
-                        </div>
-                    </div>
-                    
-                    <div class="app-card li-fi-app">
-                        <div class="app-icon">
-                            <i class="fas fa-lightbulb"></i>
-                        </div>
-                        <h4>تقنية Li-Fi</h4>
-                        <p class="app-tag">Light Fidelity</p>
-                        <p>نقل البيانات عبر إضاءة LED العادية داخل الغرف بدلاً من الواي فاي</p>
-                        <div class="app-status">
-                            <span class="status testing">قيد الاختبار</span>
-                        </div>
-                    </div>
-                    
-                    <div class="app-card six-g-app">
-                        <div class="app-icon">
-                            <i class="fas fa-signal"></i>
-                        </div>
-                        <h4>التكامل مع 6G</h4>
-                        <p class="app-tag">6G Networks</p>
-                        <p>FSO كجزء أساسي من شبكات الجيل السادس لتوفير اتصالات فائقة السرعة</p>
-                        <div class="app-status">
-                            <span class="status planned">مخطط له</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="conclusion">
-                <div class="conclusion-content">
-                    <h2>خاتمة: مستقبل مشرق لتقنية FSO</h2>
-                    <p>
-                        إننا في <strong>Lazer Link</strong> لا نبيع أجهزة فقط، بل نقدم حلولاً برمجية وهندسية 
-                        تروض الضوء لخدمة البشرية، متجاوزين عوائق الطبيعة بتقنيات إعادة التوجيه الذكي والتتبع التلقائي.
-                    </p>
-                    <p>
-                        مستقبل الاتصالات ينتمي للضوء، ومستقبل الضوء ينتمي لـ FSO.
-                    </p>
-                </div>
-                
-                <div class="conclusion-stats">
-                    <div class="conclusion-stat">
-                        <span class="stat-number">100+</span>
-                        <span class="stat-label">مشروع ناجح</span>
-                    </div>
-                    <div class="conclusion-stat">
-                        <span class="stat-number">10+</span>
-                        <span class="stat-label">دولة</span>
-                    </div>
-                    <div class="conclusion-stat">
-                        <span class="stat-number">99.999%</span>
-                        <span class="stat-label">نسبة التوفر</span>
-                    </div>
-                    <div class="conclusion-stat">
-                        <span class="stat-number">0</span>
-                        <span class="stat-label">تراخيص مطلوبة</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- التذييل -->
-    <footer class="footer">
+    <!-- Footer -->
+    <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-brand">
-                    <a href="#" class="logo">
-                        <i class="fas fa-satellite-dish"></i>
-                        <span>Lazer<span class="logo-highlight">Link</span></span>
-                    </a>
-                    <p class="footer-tagline">
-                        ثورة الاتصالات الضوئية اللاسلكية
-                    </p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+                <div class="footer-logo">
+                    <div class="logo-container" style="justify-content: flex-start;">
+                        <div class="logo-placeholder college-logo" style="background-color: var(--primary-red); color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; border-radius: 5px;">
+                            GCHS
+                        </div>
+                        <div class="logo-text">
+                            <h1 style="font-size: 1.8rem;">Laser Link</h1>
+                            <h2 style="font-size: 1rem;">كلية الغد الدولية للعلوم الصحية والتقنية</h2>
+                        </div>
                     </div>
+                    <p style="margin-top: 20px; color: #aaa; max-width: 400px;">مشروع تخرج يهدف إلى تطوير نظام اتصالات لاسلكي ضوئي متقدم لنقل البيانات بسرعات عالية وأمان كامل.</p>
                 </div>
                 
-                <div class="footer-links">
-                    <div class="link-column">
-                        <h4>التقنية</h4>
-                        <ul>
-                            <li><a href="#about">ما هي FSO</a></li>
-                            <li><a href="#components">المكونات</a></li>
-                            <li><a href="#physics">الفيزياء</a></li>
-                            <li><a href="#solutions">الحلول</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="link-column">
-                        <h4>الموارد</h4>
-                        <ul>
-                            <li><a href="#">أوراق بيضاء</a></li>
-                            <li><a href="#">فيديوهات تعليمية</a></li>
-                            <li><a href="#">أدوات حسابية</a></li>
-                            <li><a href="#">المدونة</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="link-column">
-                        <h4>الشركة</h4>
-                        <ul>
-                            <li><a href="#">من نحن</a></li>
-                            <li><a href="#">المشاريع</a></li>
-                            <li><a href="#">الوظائف</a></li>
-                            <li><a href="#">اتصل بنا</a></li>
-                        </ul>
-                    </div>
+                <div class="footer-info">
+                    <h3>معلومات الاتصال</h3>
+                    <ul>
+                        <li><i class="fas fa-university"></i> كلية الغد الدولية للعلوم الصحية والتقنية</li>
+                        <li><i class="fas fa-map-marker-alt"></i> اليمن - صنعاء - دارس </li>
+                        <li><i class="fas fa-graduation-cap"></i>   تقنيه معلومات & امن سيبراني </li>
+                    </ul>
                 </div>
             </div>
             
-            <div class="footer-bottom">
-                <div class="copyright">
-                    <p>&copy; 2024 Lazer Link. جميع الحقوق محفوظة.</p>
-                    <p class="disclaimer">
-                        المعلومات الواردة في هذا الموقع لأغراض تعليمية وعلمية.
-                    </p>
-                </div>
-                
-                <div class="footer-badges">
-                    <span class="badge">
-                        <i class="fas fa-shield-alt"></i>
-                        آمن للعين IEC 60825-1
-                    </span>
-                    <span class="badge">
-                        <i class="fas fa-bolt"></i>
-                        سرعات تصل إلى 100Gbps
-                    </span>
-                    <span class="badge">
-                        <i class="fas fa-cloud-sun"></i>
-                        مقاومة الظروف الجوية
-                    </span>
-                </div>
+            <div class="copyright">
+                <p>© 2023 Laser Link - كلية الغد الدولية للعلوم الصحية والتقنية. جميع الحقوق محفوظة.</p>
+                <p style="margin-top: 10px; font-size: 1.2rem; color: var(--accent-gold); font-weight: bold;">"المستقبل لا يُنتظر.. بل يُبنى بضوء الليزر."</p>
             </div>
         </div>
     </footer>
 
-    <!-- الأزرار العائمة -->
-    <div class="floating-buttons">
-        <button class="floating-btn" id="scrollTopBtn" title="العودة للأعلى">
-            <i class="fas fa-chevron-up"></i>
-        </button>
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
         
-        <button class="floating-btn" id="simulationBtn" title="محاكاة FSO">
-            <i class="fas fa-play"></i>
-        </button>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const nav = document.querySelector('nav ul');
         
-        <button class="floating-btn" id="calculatorBtn" title="حاسبة الربط">
-            <i class="fas fa-calculator"></i>
-        </button>
-    </div>
-
-    <!-- نافذة المحاكاة -->
-    <div class="simulation-modal" id="simulationModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>
-                    <i class="fas fa-vial"></i>
-                    محاكاة تقنية FSO
-                </h3>
-                <button class="modal-close" id="closeSimulation">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            
-            <div class="modal-body">
-                <div class="simulation-container">
-                    <div class="simulation-canvas" id="simulationCanvas">
-                        <!-- سيتم إضافة المحاكاة بواسطة JavaScript -->
-                    </div>
-                    
-                    <div class="simulation-controls">
-                        <div class="control-group">
-                            <label for="simDistance">المسافة:</label>
-                            <input type="range" id="simDistance" min="0.5" max="5" step="0.1" value="2">
-                            <span id="simDistanceValue">2 كم</span>
-                        </div>
-                        
-                        <div class="control-group">
-                            <label for="simWeather">الطقس:</label>
-                            <select id="simWeather">
-                                <option value="clear">جو صاف</option>
-                                <option value="rain">مطر</option>
-                                <option value="fog">ضباب</option>
-                                <option value="turbulence">اضطراب جوي</option>
-                            </select>
-                        </div>
-                        
-                        <div class="control-group">
-                            <label for="simPower">قوة الليزر:</label>
-                            <input type="range" id="simPower" min="1" max="10" step="1" value="5">
-                            <span id="simPowerValue">متوسطة</span>
-                        </div>
-                        
-                        <button class="btn btn-simulate">
-                            <i class="fas fa-redo"></i>
-                            إعادة تشغيل المحاكاة
-                        </button>
-                    </div>
-                    
-                    <div class="simulation-stats">
-                        <div class="sim-stat">
-                            <span class="stat-label">قوة الإشارة:</span>
-                            <span class="stat-value" id="signalStrength">-28 dBm</span>
-                        </div>
-                        <div class="sim-stat">
-                            <span class="stat-label">معدل البيانات:</span>
-                            <span class="stat-value" id="dataRate">8.4 Gbps</span>
-                        </div>
-                        <div class="sim-stat">
-                            <span class="stat-label">معدل الخطأ:</span>
-                            <span class="stat-value" id="errorRate">2.1 × 10⁻⁹</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script src="script.js"></script>
+        mobileMenuBtn.addEventListener('click', () => {
+            nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+        });
+        
+        // Adjust menu for window resize
+        window.addEventListener('resize', () => {
+            if(window.innerWidth > 992) {
+                nav.style.display = 'flex';
+            } else {
+                nav.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
